@@ -10,12 +10,14 @@
     "size": "npm run prepublish && bundlesize",
     "standard": "standard",
     "cover": "npm test && nyc report --reporter=html --reporter=lcov > coverage.lcov && codecov",
-    "test": "nyc ava"
+    "test": "nyc ava",
+    "version": "node -v"
   },
   "keywords": [],
   "author": "Brent Jackson",
   "license": "MIT",
   "dependencies": {
+    "node": "8.6.0",
     "objss": "^1.0.3",
     "tag-hoc": "^1.0.0-0"
   },

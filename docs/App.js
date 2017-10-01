@@ -11,21 +11,33 @@ import Footer from './Footer'
 
 const Root = cxs('div')(props => ({
   fontFamily: '"Roboto Mono", Menlo, monospace',
-  color: typeof props.theme,
-  lineHeight: 1.5
+  color: props.theme.colors.blue,
+  lineHeight: 1.5,
+  "& a, & span": {
+      color: "gold",
+      animation: "spin 5s infinite",
+  },
+  "@keyframes spin": {
+      from: {
+          color: props.theme.colors.blue,
+          fontSize: "11px",
+      },
+      to: {
+          color: "red",
+          fontSize: "16px",
+      },
+  }
 }))
 
 const App = props => (
   <ThemeProvider theme={theme}>
-    <Root>
-      <Container>
-        <Header />
-        <About />
-        <Usage />
-        <CTA />
-        <Footer />
-      </Container>
-    </Root>
+      <Root>
+          <Container>
+              <Footer />
+              <a href="#">Hello world</a>
+              <span>Foo bar</span>
+          </Container>
+      </Root>
   </ThemeProvider>
 )
 
