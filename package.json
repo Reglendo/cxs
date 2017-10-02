@@ -17,6 +17,7 @@
   "author": "Brent Jackson",
   "license": "MIT",
   "dependencies": {
+    "inline-style-prefixer": "^3.0.8"
   },
   "devDependencies": {
     "ava": "^0.21.0",
@@ -39,6 +40,7 @@
     "standard": "^10.0.2",
     "styled-system": "^1.0.0-12",
     "webpack": "^3.3.0",
+    "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.6.0"
   },
   "ava": {

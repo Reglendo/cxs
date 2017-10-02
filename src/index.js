@@ -1,3 +1,4 @@
+import prefixAll from 'inline-style-prefixer/static'
 let cache = {}
 const rules = []
 const prefix = '#app '
@@ -48,10 +49,13 @@ const parse = (obj, child = '', media, prep = true) => {
   })
     .join(' ')
 }
-module.exports = (...styles) =>
-  styles.map(style => parse(style))
+module.exports = (...styles) => {
+  return styles.map(style => {
+    const prefixedStyle = prefixAll(style)
+    return parse(prefixedStyle)
+  })
     .join(' ').trim()
-
+}
 module.exports.css = () => rules.sort().join('')
 
 module.exports.reset = () => {

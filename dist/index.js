@@ -1,5 +1,11 @@
 'use strict';
 
+var _static = require('inline-style-prefixer/static');
+
+var _static2 = _interopRequireDefault(_static);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var cache = {};
 var rules = [];
 var prefix = '#app ';
@@ -67,10 +73,10 @@ module.exports = function () {
   }
 
   return styles.map(function (style) {
-    return parse(style);
+    var prefixedStyle = (0, _static2.default)(style);
+    return parse(prefixedStyle);
   }).join(' ').trim();
 };
-
 module.exports.css = function () {
   return rules.sort().join('');
 };
