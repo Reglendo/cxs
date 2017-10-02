@@ -17,9 +17,6 @@
   "author": "Brent Jackson",
   "license": "MIT",
   "dependencies": {
-    "node": "8.6.0",
-    "objss": "^1.0.3",
-    "tag-hoc": "^1.0.0-0"
   },
   "devDependencies": {
     "ava": "^0.21.0",
