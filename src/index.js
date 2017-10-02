@@ -1,28 +1,28 @@
 let cache = {}
 const rules = []
-const prefix = "#app "
+const prefix = '#app '
 let insert = rule => rules.push(rule)
 const hyph = s => s.replace(/[A-Z]|^ms/g, '-$&').toLowerCase()
 const mx = (rule, media) => media ? `${media}{${rule}}` : rule
 const rx = (cn, prop, val) => { return `${cn}{${hyph(prop)}:${val}}` }
 const noAnd = s => s.replace(/&/g, '')
 const multi = (cn, child) => {
-    let r = [];
-    child.split(',').forEach((o) => {
-        r.push((cn === "" ? "" : prefix+"."+cn)+o)
-    });
-    return r.join(',')
+  let r = []
+  child.split(',').forEach((o) => {
+    r.push((cn === '' ? '' : prefix + '.' + cn) + o)
+  })
+  return r.join(',')
 }
 const anim = (obj) => {
-    return Object.keys(obj).map(key => {
-        if(typeof obj[key] === "string") {
-            return hyph(key) + ": " + obj[key] + ";"
-        } else {
-            return key + " {"
-                + anim(obj[key]) +
-            "}"
-        }
-    }).join(' ')
+  return Object.keys(obj).map(key => {
+    if (typeof obj[key] === 'string') {
+      return hyph(key) + ': ' + obj[key] + ';'
+    } else {
+      return key + ' {'
+        + anim(obj[key]) +
+        '}'
+    }
+  }).join(' ')
 }
 const parse = (obj, child = '', media, prep = true) => {
   return Object.keys(obj).map(key => {
@@ -30,14 +30,14 @@ const parse = (obj, child = '', media, prep = true) => {
 
     if (val === null) return ''
     if (typeof val === 'object') {
-        if(/^@keyframes/.test(key)) {
-           insert(key + "{" + anim(val) + "}")
-           return
-        } else {
-            const m2 = /^@/.test(key) ? key : null
-            const c2 = m2 ? child : child + key
-            return parse(val, c2, m2 || media)
-        }
+      if (/^@keyframes/.test(key)) {
+        insert(key + '{' + anim(val) + '}')
+        return
+      } else {
+        const m2 = /^@/.test(key) ? key : null
+        const c2 = m2 ? child : child + key
+        return parse(val, c2, m2 || media)
+      }
     }
     const _key = key + val + child + media
     if (cache[_key]) return cache[_key]
@@ -50,7 +50,7 @@ const parse = (obj, child = '', media, prep = true) => {
 }
 module.exports = (...styles) =>
   styles.map(style => parse(style))
-  .join(' ').trim()
+    .join(' ').trim()
 
 module.exports.css = () => rules.sort().join('')
 
@@ -65,6 +65,9 @@ if (typeof document !== 'undefined') {
   ).sheet
   insert = rule => {
     rules.push(rule)
-    sheet.insertRule(rule, sheet.cssRules.length)
+    try {
+      sheet.insertRule(rule, sheet.cssRules.length)
+    } catch (e) {
+    }
   }
 }
