@@ -42,7 +42,7 @@ const Root = cxs('div')(props => ({
     content: " ",
     width: "100%",
     height: "100%",
-    opacity: ".5",
+    opacity: .5,
     background: "repeating-linear-gradient(-55deg,#ccc,#ccc 10px,#ddd 10px,#ddd 20px)",
     animation: "sliding 0.5s linear infinite",
     transform: "translateZ(0)",

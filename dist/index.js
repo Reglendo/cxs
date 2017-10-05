@@ -24,7 +24,7 @@ var qts = function qts(prop, val) {
   return prop === 'content' ? '"' + val + '"' : val;
 };
 var rx = function rx(cn, prop, val) {
-  console.log(prop, val);return cn + '{' + hyph(prop) + ':' + qts(prop, val) + '}';
+  return cn + '{' + hyph(prop) + ':' + qts(prop, val) + '}';
 };
 var noAnd = function noAnd(s) {
   return s.replace(/&/g, '');
@@ -50,11 +50,15 @@ var parse = function parse(obj) {
   var media = arguments[2];
   var prep = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
 
+
   return Object.keys(obj).map(function (key) {
     var val = obj[key];
 
     if (val === null) return '';
-    if (typeof val === 'object') {
+
+    if (Array.isArray(val)) {
+      val = (0, _cssInJsUtils.resolveArrayValue)(key, val);
+    } else if (typeof val === 'object') {
       if (/^@keyframes/.test(key)) {
         insert(key + '{' + anim(val) + '}');
         return;
