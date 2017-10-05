@@ -26,7 +26,10 @@ const Root = cxs('div')(props => ({
           color: "red",
           fontSize: "16px",
       },
-  }
+  },
+  "& #helloworld:before": {
+    content: "Before:"
+  },
 }))
 
 const App = props => (
@@ -34,7 +37,7 @@ const App = props => (
       <Root>
           <Container>
               <Footer />
-              <a href="#">Hello world</a>
+              <a title={"Title"} id={"helloworld"} href="#">Hello world</a>
               <span>Foo bar</span>
           </Container>
       </Root>
