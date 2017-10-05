@@ -4,6 +4,8 @@ var _static = require('inline-style-prefixer/static');
 
 var _static2 = _interopRequireDefault(_static);
 
+var _cssInJsUtils = require('css-in-js-utils');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var cache = {};
@@ -18,8 +20,11 @@ var hyph = function hyph(s) {
 var mx = function mx(rule, media) {
   return media ? media + '{' + rule + '}' : rule;
 };
+var qts = function qts(prop, val) {
+  return prop === 'content' ? '"' + val + '"' : val;
+};
 var rx = function rx(cn, prop, val) {
-  return cn + '{' + hyph(prop) + ':' + val + '}';
+  console.log(prop, val);return cn + '{' + hyph(prop) + ':' + qts(prop, val) + '}';
 };
 var noAnd = function noAnd(s) {
   return s.replace(/&/g, '');

@@ -1,4 +1,6 @@
 import prefixAll from 'inline-style-prefixer/static'
+import { resolveArrayValue } from 'css-in-js-utils'
+
 let cache = {}
 const rules = []
 const prefix = '#app '
@@ -27,10 +29,15 @@ const anim = (obj) => {
   }).join(' ')
 }
 const parse = (obj, child = '', media, prep = true) => {
+
   return Object.keys(obj).map(key => {
-    const val = obj[key]
+    let val = obj[key]
 
     if (val === null) return ''
+
+    if(Array.isArray(val)) {
+      val = resolveArrayValue(key, val)
+    } else
     if (typeof val === 'object') {
       if (/^@keyframes/.test(key)) {
         insert(key + '{' + anim(val) + '}')

@@ -28,7 +28,28 @@ const Root = cxs('div')(props => ({
       },
   },
   "& #helloworld:before": {
-    content: "Before:"
+    content: " ",
+    display: "inline-block",
+    height: "15px",
+    width: "15px",
+    background: "red",
+  },
+  "& .hello:after": {
+    position: "absolute",
+    pointerEvents: "none",
+    top: 0,
+    left: 0,
+    content: " ",
+    width: "100%",
+    height: "100%",
+    opacity: ".5",
+    background: "repeating-linear-gradient(-55deg,#ccc,#ccc 10px,#ddd 10px,#ddd 20px)",
+    animation: "sliding 0.5s linear infinite",
+    transform: "translateZ(0)",
+    willChange: "background-position",
+    backgroundSize: "25px 100%",
+    zIndex: 1000000,
+    outline: "3px solid #dbcba3",
   },
 }))
 
@@ -37,7 +58,7 @@ const App = props => (
       <Root>
           <Container>
               <Footer />
-              <a title={"Title"} id={"helloworld"} href="#">Hello world</a>
+              <a title={"Title"} className={"hello"} id={"helloworld"} href="#">Hello world</a>
               <span>Foo bar</span>
           </Container>
       </Root>
