@@ -12,6 +12,8 @@ class Stats extends React.Component {
         wrap
         title={css}>
         cxs generated {format(css.length)} ({css.length}) of CSS to render this page.
+
+        {cxs.css()}
       </Pre>
     )
   }

@@ -13,9 +13,12 @@ const Root = cxs('div')(props => ({
   fontFamily: '"Roboto Mono", Menlo, monospace',
   color: props.theme.colors.blue,
   lineHeight: 1.5,
+  "!body": {
+    fontSize: "22px",
+  },
   "& a, & span": {
       color: "gold",
-      animation: "spin 5s infinite",
+      animation: "spin 50s infinite",
   },
   "@keyframes spin": {
       from: {
@@ -43,7 +46,7 @@ const Root = cxs('div')(props => ({
     width: "100%",
     height: "100%",
     opacity: .5,
-    background: "repeating-linear-gradient(-55deg,#ccc,#ccc 10px,#ddd 10px,#ddd 20px)",
+    background: "red",
     animation: "sliding 0.5s linear infinite",
     transform: "translateZ(0)",
     willChange: "background-position",

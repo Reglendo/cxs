@@ -8,7 +8,7 @@ let insert = rule => rules.push(rule)
 const hyph = s => s.replace(/[A-Z]|^ms/g, '-$&').toLowerCase()
 const mx = (rule, media) => media ? `${media}{${rule}}` : rule
 const qts = (prop, val) => (prop === 'content' ? ('"' + val + '"') : val)
-const rx = (cn, prop, val) => { return `${cn}{${hyph(prop)}:${qts(prop, val)}}` }
+const rx = (cn, prop, val) => { return `${cn.replace("!","")}{${hyph(prop)}:${qts(prop, val)}}` }
 const noAnd = s => s.replace(/&/g, '')
 const multi = (cn, child) => {
   let r = []
@@ -50,7 +50,8 @@ const parse = (obj, child = '', media, prep = true) => {
     }
     const _key = key + val + child + media
     if (cache[_key]) return cache[_key]
-    const className = 'x' + (rules.length).toString(36)
+    const className = child[0] === "!" ? "" : 'x' + (rules.length).toString(36)
+
     insert(mx(rx(multi(className, noAnd(child)), key, val), media))
     cache[_key] = className
     return className

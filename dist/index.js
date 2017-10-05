@@ -24,7 +24,7 @@ var qts = function qts(prop, val) {
   return prop === 'content' ? '"' + val + '"' : val;
 };
 var rx = function rx(cn, prop, val) {
-  return cn + '{' + hyph(prop) + ':' + qts(prop, val) + '}';
+  return cn.replace("!", "") + '{' + hyph(prop) + ':' + qts(prop, val) + '}';
 };
 var noAnd = function noAnd(s) {
   return s.replace(/&/g, '');
@@ -70,7 +70,8 @@ var parse = function parse(obj) {
     }
     var _key = key + val + child + media;
     if (cache[_key]) return cache[_key];
-    var className = 'x' + rules.length.toString(36);
+    var className = child[0] === "!" ? "" : 'x' + rules.length.toString(36);
+
     insert(mx(rx(multi(className, noAnd(child)), key, val), media));
     cache[_key] = className;
     return className;
