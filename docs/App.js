@@ -42,7 +42,7 @@ const Root = cxs('div')(props => ({
     pointerEvents: "none",
     top: 0,
     left: 0,
-    content: " ",
+    content: "attr(title)",
     width: "100%",
     height: "100%",
     opacity: .5,

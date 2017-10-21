@@ -7,7 +7,7 @@ const prefix = '#app '
 let insert = rule => rules.push(rule)
 const hyph = s => s.replace(/[A-Z]|^ms/g, '-$&').toLowerCase()
 const mx = (rule, media) => media ? `${media}{${rule}}` : rule
-const qts = (prop, val) => (prop === "content" && (val === " " || !val) ? ('"' + val + '"') : val)
+const qts = (prop, val) => (prop === "content" && val.substring(0, 4) !== "attr" ? ('"' + val + '"') : val)
 const rx = (cn, prop, val) => { return `${cn.replace("!","")}{${hyph(prop)}:${qts(prop, val)}}` }
 const noAnd = s => s.replace(/&/g, '')
 const multi = (cn, child) => {
