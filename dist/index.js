@@ -21,7 +21,7 @@ var mx = function mx(rule, media) {
   return media ? media + '{' + rule + '}' : rule;
 };
 var qts = function qts(prop, val) {
-  return prop === "content" && (val === " " || !val) ? '"' + val + '"' : val;
+  return prop === "content" && val.substring(0, 4) !== "attr" ? '"' + val + '"' : val;
 };
 var rx = function rx(cn, prop, val) {
   return cn.replace("!", "") + '{' + hyph(prop) + ':' + qts(prop, val) + '}';
