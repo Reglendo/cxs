@@ -18,7 +18,8 @@
   "license": "MIT",
   "dependencies": {
     "css-in-js-utils": "^2.0.0",
-    "inline-style-prefixer": "^3.0.8"
+    "inline-style-prefixer": "^3.0.8",
+    "shallow-compare": "^1.2.2"
   },
   "devDependencies": {
     "ava": "^0.21.0",
