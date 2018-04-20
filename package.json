@@ -1,16 +1,13 @@
 {
   "name": "@reglendo/cxs",
-  "version": "7.0.0",
+  "version": "1.1.0",
   "description": "fork of CXS: Fast af css-in-js in under 1kb",
   "main": "dist/index.js",
   "scripts": {
     "prepublish": "babel src -d dist",
     "build": "node docs/build.js",
     "start": "webpack-dev-server",
-    "size": "npm run prepublish && bundlesize",
     "standard": "standard",
-    "cover": "npm test && nyc report --reporter=html --reporter=lcov > coverage.lcov && codecov",
-    "test": "nyc ava",
     "version": "node -v"
   },
   "keywords": [],
@@ -18,7 +15,6 @@
   "license": "MIT",
   "dependencies": {
     "css-in-js-utils": "^2.0.0",
-    "inline-style-prefixer": "^3.0.8",
     "shallow-compare": "^1.2.2"
   },
   "devDependencies": {
@@ -44,42 +40,5 @@
     "webpack": "^3.3.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.6.0"
-  },
-  "ava": {
-    "require": [
-      "babel-register"
-    ],
-    "babel": "inherit"
-  },
-  "nyc": {
-    "exclude": [
-      "test",
-      "dist",
-      "docs"
-    ]
-  },
-  "standard": {
-    "ignore": [
-      "benchmarks",
-      "coverage",
-      ".nyc_output",
-      "dist",
-      "_test",
-      "docs"
-    ]
-  },
-  "bundlesize": [
-    {
-      "path": "./dist/index.js",
-      "maxSize": "0.8 kb"
-    },
-    {
-      "path": "./dist/component.js",
-      "maxSize": "0.7 kb"
-    },
-    {
-      "path": "./dist/monolithic.js",
-      "maxSize": "1.0 kb"
-    }
-  ]
+  }
 }

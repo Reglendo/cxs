@@ -1,14 +1,9 @@
 'use strict';
 
-var _static = require('inline-style-prefixer/static');
-
-var _static2 = _interopRequireDefault(_static);
-
 var _cssInJsUtils = require('css-in-js-utils');
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var cache = {}; // import prefixAll from 'inline-style-prefixer/static'
 
-var cache = {};
 var rules = [];
 var prefix = '#app ';
 var insert = function insert(rule) {
@@ -83,8 +78,8 @@ module.exports = function () {
   }
 
   return styles.map(function (style) {
-    var prefixedStyle = (0, _static2.default)(style);
-    return parse(prefixedStyle);
+    // const prefixedStyle = prefixAll(style)
+    return parse(style);
   }).join(' ').trim();
 };
 module.exports.css = function () {
