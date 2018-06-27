@@ -6,9 +6,6 @@ const shallowCompare = require('shallow-compare').default
 
 module.exports = C => (...args) => {
  class Comp extends PureComponent {
-    shouldComponentUpdate(nextProps,nextState) {
-      return shallowCompare(this, nextProps, nextState);
-    }
     render() {
       const props = this.props
       const context = this.context
