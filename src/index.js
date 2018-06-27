@@ -1,4 +1,4 @@
-// import prefixAll from 'inline-style-prefixer/static'
+import prefixAll from 'inline-style-prefixer/static'
 import { resolveArrayValue } from 'css-in-js-utils'
 
 let cache = {}
@@ -60,7 +60,13 @@ const parse = (obj, child = '', media, prep = true) => {
 }
 module.exports = (...styles) => {
   return styles.map(style => {
-    // const prefixedStyle = prefixAll(style)
+    if(typeof style === "object") {
+      try {
+        return parse(prefixAll(style))
+      } catch (e) {
+
+      }
+    }
     return parse(style)
   })
     .join(' ').trim()

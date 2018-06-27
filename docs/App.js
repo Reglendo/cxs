@@ -1,6 +1,6 @@
 import React from 'react'
-import cxs from 'cxs/component'
-import ThemeProvider from 'cxs/ThemeProvider'
+import cxs from '../dist/component'
+import ThemeProvider from '../dist/ThemeProvider'
 import theme from './theme'
 import Container from './Container'
 import Header from './Header'
@@ -19,6 +19,11 @@ const Root = cxs('div')(props => ({
   "& a, & span": {
       color: "gold",
       animation: "spin 50s infinite",
+      "& .world": {
+        ".hello": {
+          background: "yellow"
+        },
+      },
   },
   "@keyframes spin": {
       from: {
@@ -61,8 +66,8 @@ const App = props => (
       <Root>
           <Container>
               <Footer />
-              <a title={"Title"} className={"hello"} id={"helloworld"} href="#">Hello world</a>
-              <span>Foo bar</span>
+            <a title={"Title"} className={"hello"} id={"helloworld"} href="#">Hello world <span className={"world"}>Nested</span></a>
+              <span>Foo</span>
           </Container>
       </Root>
   </ThemeProvider>

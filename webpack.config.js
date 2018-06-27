@@ -1,6 +1,5 @@
 const path = require('path')
 const webpack = require('webpack')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const config = {
   entry: './docs/entry.js',
@@ -30,9 +29,8 @@ const config = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      'process.env.NODE_ENV': "production"
     }),
-    new BundleAnalyzerPlugin()
   ],
   devServer: {
     contentBase: 'docs'
